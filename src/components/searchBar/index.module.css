@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 80%;
+    padding: 15px 30px;
+    background-color: var(--white);
+    border-radius: 10px;
+    max-width: 350px;
+    gap: 5px;
+}
+
+.input {
+    width: 100%;
+    border: 0px;
+    font-size: 0.8em;
+    padding: 0;
+    color: var(--grey);
+}
