@@ -24,6 +24,7 @@
     width: 40px;
     height: 40px;
     background-color: var(--white);
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
 }
 
 .nav h2 {
@@ -164,4 +165,5 @@
     width: 247px;
     height: 54px;
     cursor: pointer;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
 }

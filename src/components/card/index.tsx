@@ -16,7 +16,7 @@ const Card: NextPage<CardProps> = ({ brand, image, price, idx, id }) => {
                 <Image src={image} fill style={{ objectFit: 'contain' }} alt={`${brand} image`} />
             </Link>
             <div className={styles.bottom}>
-                <Link href={`/${id}-${brand}`}>{`$${dollars}.${cents}`}</Link>
+                <Link href={`/${id}-${brand}`} className={styles.price}>{`$${dollars}.${cents}`}</Link>
                 <div className={styles.icon}>
                     <div className={styles.lineVertical} />
                     <div className={styles.lineHorizontal} />

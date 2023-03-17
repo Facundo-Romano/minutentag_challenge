@@ -62,7 +62,7 @@ export default function Home() {
               <h4 className={styles.h3}>Popular</h4>
               <p className={styles.seeAll}>See All</p>
             </div>
-            <div className={styles.section}>
+            <div className={styles.cardSection}>
               {
                 products?.map((product, idx) => <Card brand={product.brand} image={product.image} price={product.price || 0} id={product.id} idx={idx} key={product.id}/>)
               }
