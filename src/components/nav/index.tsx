@@ -11,7 +11,7 @@ export default function Nav() {
           <div className={styles.line1} />
         </div>
       </div>
-      <Image src="/icons/profile-picture.jpg" width={45} height={45} className={styles.profilePicture} alt="profile picture" />
+      <Image src="/icons/profile-picture.jpg" width={40} height={40} className={styles.profilePicture} alt="profile picture" />
     </div>
   );
 };

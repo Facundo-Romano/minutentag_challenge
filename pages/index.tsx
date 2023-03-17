@@ -7,6 +7,7 @@ import SearchBar from '@/src/components/searchBar';
 import Card from '@/src/components/card';
 import BottomNavBar from '@/src/components/bottomNavBar';
 import { Product } from '@/types';
+import Image from 'next/image';
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>();
@@ -47,11 +48,11 @@ export default function Home() {
             <div className={styles.section}>
               <button className={styles.button}>All</button>
               <button className={`${styles.button} ${styles.selected}`}>
-                <img className={styles.icon} src="/icons/beer.png" alt="beer icon" />
+                <Image className={styles.icon} width={23} height={23} src="/icons/beer.png" alt="beer icon" />
                 Beer
               </button>
               <button className={styles.button}>
-                <img className={styles.icon} src="/icons/wine-glass.png" alt="wine icon" />
+                <Image className={styles.icon} width={23} height={23} src="/icons/wine-glass.png" alt="wine icon" />
                 Wine
               </button>
             </div>
@@ -63,7 +64,7 @@ export default function Home() {
             </div>
             <div className={styles.section}>
               {
-                products?.map((product, idx) => <Card {...product} idx={idx} key={product.id}/>)
+                products?.map((product, idx) => <Card brand={product.brand} image={product.image} price={product.price || 0} id={product.id} idx={idx} key={product.id}/>)
               }
             </div>
           </div>
