@@ -2,6 +2,7 @@ import { NextPage } from 'next';
 import styles from './index.module.css';
 import { CardProps } from '@/types';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Card: NextPage<CardProps> = ({ brand, image, price, idx, id }) => {
     const priceString = price.toString();
@@ -10,12 +11,12 @@ const Card: NextPage<CardProps> = ({ brand, image, price, idx, id }) => {
 
     return (
         <div className={`${styles.container} ${idx%2 === 0 ? styles.even : styles.odd}`}>
-            <a href={`/${id}-${brand}`} className={styles.brand}>{brand}</a>
-            <a href={`/${id}-${brand}`} className={styles.img}>
+            <Link href={`/${id}-${brand}`} className={styles.brand}>{brand}</Link>
+            <Link href={`/${id}-${brand}`} className={styles.img}>
                 <Image src={image} fill style={{ objectFit: 'contain' }} alt={`${brand} image`} />
-            </a>
+            </Link>
             <div className={styles.bottom}>
-                <a href={`/${id}-${brand}`}>{`$${dollars}.${cents}`}</a>
+                <Link href={`/${id}-${brand}`}>{`$${dollars}.${cents}`}</Link>
                 <div className={styles.icon}>
                     <div className={styles.lineVertical} />
                     <div className={styles.lineHorizontal} />
