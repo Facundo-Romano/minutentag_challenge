@@ -11,8 +11,9 @@ export default function ProductDetail() {
     const router = useRouter();
     const [product, setProduct] = useState<Product>();
     const [stock, setStock] = useState<number>();
-    const [price, setPrice] = useState<string>();
-    const [image, setImage] = useState<string>();
+    const [price, setPrice] = useState<string>("");
+    const [image, setImage] = useState<string>("");
+    const [activeSize, setActiveSize] = useState<string>("");
     const [notFound, setNotFound] = useState<boolean>(false);
 
     useEffect(() => {
@@ -39,18 +40,6 @@ export default function ProductDetail() {
         
         getProductPromise();
     }, [router.isReady]);
-
-    const getStockAndPricePromise = async (code: string) => {
-        try {
-            const { data } = await axios.get("/api/stock-price/" + code);
-
-            return data?.stockPrice;
-        } catch (error) { 
-            setNotFound(true);
-            console.log(error);
-        }
-    };
-
 
     const priceToUsd = (price: number) => {
         const priceString = price.toString();
@@ -94,6 +83,7 @@ export default function ProductDetail() {
 
             setStock(stockAndPrice.stock);
             setPrice(priceInUsd);
+            setActiveSize(code);
         } catch (error) { 
             setNotFound(true);
             console.log(error);
@@ -111,7 +101,7 @@ export default function ProductDetail() {
         <>
             <div className={styles.container}>
                 <div className={styles.nav}>
-                    <button>
+                    <a href="/">
                         <svg
                             fill="#323232"
                             viewBox="0 0 16 16"
@@ -120,7 +110,7 @@ export default function ProductDetail() {
                             >
                             <path fillRule="evenodd" d="M12 8a.5.5 0 01-.5.5H5.707l2.147 2.146a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 11.708.708L5.707 7.5H11.5a.5.5 0 01.5.5z"/>
                         </svg>
-                    </button>
+                    </a>
                     <h2>Detail</h2>
                     <button>
                         <svg
@@ -151,9 +141,27 @@ export default function ProductDetail() {
                         <h4>Size</h4>
                         <div className={styles.sizesContainer}>
                             {
-                                product && product.skus.map(size => <button onClick={() => updateStockAndPrice(size.code)} key={size.code} className={styles.size}>{size.name}</button>)
+                                product && product.skus.map(size => {
+
+                                    if (size.code === activeSize) return <button key={size.code} className={styles.activeSize}>{size.name}</button>
+
+                                    return <button onClick={() => updateStockAndPrice(size.code)} key={size.code} className={styles.size}>{size.name}</button>
+                                })
                             }
                         </div>
+                    </div>
+                    <div className={styles.thirdSection}>
+                        <button className={styles.shopBag}>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="6" r="4.25" stroke="#FF9F24" stroke-width="1.5"/>
+                                <path d="M7.53113 6.75H16.4689C18.1079 6.75 19.4905 7.97049 19.6938 9.59689L20.6938 17.5969C20.9362 19.5367 19.4237 21.25 17.4689 21.25H6.53113C4.57626 21.25 3.06375 19.5367 3.30623 17.5969L4.30623 9.59689C4.50953 7.97049 5.89208 6.75 7.53113 6.75Z" fill="white" stroke="#FF9F24" stroke-width="1.5"/>
+                                <circle cx="9.75" cy="10.75" r="0.75" fill="#FF9F24"/>
+                                <circle cx="13.75" cy="10.75" r="0.75" fill="#FF9F24"/>
+                            </svg>
+                        </button>
+                        <button className={styles.addToCart}>
+                            Add to cart
+                        </button>
                     </div>
                 </div>
             </div>
