@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    margin: 0 10% 80px 10%;
+    margin: 0 5% 80px 5%;
 }
 
 .h2 {
@@ -24,7 +24,6 @@
     flex-direction: column;
     width: 100%;
     margin-top: 15px;
-    max-width: 90%;
 }
 
 .section {
@@ -76,7 +75,7 @@
 .cardSection {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     width: 100%;
 }
@@ -88,7 +87,6 @@
     justify-content: center;
     align-items: flex-start;
     width: 100%;
-
 }
 
 @media (min-width: 1200px) {
