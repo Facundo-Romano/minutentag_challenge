@@ -1,7 +1,10 @@
+import { NextPage } from 'next';
 import Image from 'next/image';
 import styles from './index.module.css';
+import { NavProps } from '@/types';
+import Link from 'next/link';
 
-export default function Nav() {
+const Nav: NextPage<NavProps> = ({ activeNav }) => {
   return (
     <div className={styles.container}>
       <div className={styles.navMenu}>
@@ -13,8 +16,8 @@ export default function Nav() {
       </div>
       <div className={styles.navDesktopContainer}>
         <Image src="/favicon.ico" className={styles.logo} width={60} height={60} alt="logo" />
-        <p className={`${styles.navDesktop} ${styles.active}`}>Home</p>
-        <p className={styles.navDesktop}>Products</p>
+        <Link href="/" className={`${styles.navDesktop} ${ activeNav === "Home" ? styles.active : ""}`}>Home</Link>
+        <p className={`${styles.navDesktop} ${ activeNav === "Product" ? styles.active : ""}`}>Products</p>
         <p className={styles.navDesktop}>Cart</p>
         <p className={styles.navDesktop}>Settings</p>
       </div>
@@ -25,3 +28,5 @@ export default function Nav() {
     </div>
   );
 };
+
+export default Nav;

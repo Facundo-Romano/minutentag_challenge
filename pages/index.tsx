@@ -36,7 +36,7 @@ export default function Home() {
       </Head>
       <>
         <div className={styles.container}>
-          <Nav />
+          <Nav activeNav='Home'/>
           <div className={styles.subContainerDesktop}>
             <div className={styles.welcome}>
               <h2 className={styles.h2}>Hi Mr. Michael,</h2>

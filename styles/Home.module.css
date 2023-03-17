@@ -24,7 +24,7 @@
     flex-direction: column;
     width: 100%;
     margin-top: 15px;
-    max-width: 480px;
+    max-width: 90%;
 }
 
 .section {
@@ -120,7 +120,6 @@
     }
 
     .subContainer {
-        max-width: 90%;
         margin: 30px 5%;
     }
 

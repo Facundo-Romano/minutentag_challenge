@@ -7,6 +7,7 @@ import styles from '@/styles/ProductDetail.module.css';
 import { Product } from '@/types';
 import Image from 'next/image';
 import TextComponent from '@/src/components/textComponent';
+import Nav from '@/src/components/nav';
 
 export default function ProductDetail() {
     const router = useRouter();
@@ -133,20 +134,30 @@ export default function ProductDetail() {
                         </svg>
                     </button>
                 </div>
+                <div className={styles.navDesktop}>
+                    <Nav activeNav='Product'/>
+                </div>
                 <div className={styles.img}>
                     { image ? <Image src={image} fill style={{ objectFit: 'contain' }} alt="product image" /> : <></> }
                 </div>
                 <div className={styles.subContainer}>
-                    <div className={styles.firstSection}>
-                        <div className={styles.brand}>
-                            <h1>{product?.brand}</h1>
-                            <p>Origin: {product?.origin} | Stock: {stock}</p>
+                    <div className={styles.sectionDesktop}>
+                        <div className={styles.subSectionDesktop}>
+                            <div className={styles.firstSection}>
+                                <div className={styles.brand}>
+                                    <h1>{product?.brand}</h1>
+                                    <p>Origin: {product?.origin} | Stock: {stock}</p>
+                                </div>
+                                <p className={styles.price}>${ price }</p>
+                            </div>
+                            <div className={`${styles.secondSection} ${styles.descriptionSectionDesktop}`}>
+                                <h3>Description</h3>
+                                <TextComponent text={product?.information || ""} />
+                            </div>
                         </div>
-                        <p className={styles.price}>${ price }</p>
-                    </div>
-                    <div className={styles.secondSection}>
-                        <h3>Description</h3>
-                        <TextComponent text={product?.information || ""} maxHeight={96} />
+                        <div className={styles.imgDesktop}>
+                            { image ? <Image src={image} fill style={{ objectFit: 'contain' }} alt="product image" /> : <></> }
+                        </div>
                     </div>
                     <div className={styles.secondSection}>
                         <h4>Size</h4>

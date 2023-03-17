@@ -1,24 +1,11 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { NextPage } from 'next';
 import { TextProps } from "@/types";
 import styles from './index.module.css';
 
-const TextComponent: NextPage<TextProps> = ({ text, maxHeight }) => {
+const TextComponent: NextPage<TextProps> = ({ text }) => {
     const [showMore, setShowMore] = useState<boolean>(false);
     const textRef = useRef<HTMLParagraphElement>(null);
-
-    const evaluateHeight = () => {
-        if (textRef.current?.clientHeight && textRef.current?.clientHeight < maxHeight ) return true;
-        return false;
-    };
-
-    useEffect(() => {
-        
-        const readMore = evaluateHeight();
-
-        setShowMore(readMore);
-
-    }, [textRef.current?.clientHeight]);
   
     return (
       <div className={styles.container}>

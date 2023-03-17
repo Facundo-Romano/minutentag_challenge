@@ -33,6 +33,10 @@
     font-weight: 700;
 }
 
+.navDesktop {
+    display: none;
+}
+
 .img {
     position: relative;
     overflow: hidden;
@@ -166,4 +170,81 @@
     height: 54px;
     cursor: pointer;
     box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
+}
+
+.imgDesktop {
+    display: none;
+}
+
+.sectionDesktop {
+    width: 100%;
+}
+
+.subSectionDesktop {
+    width: 100%;
+}
+
+@media (min-width: 1200px) {
+    .nav {
+        display: none;
+    }
+
+    .navDesktop {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .img {
+        display: none;
+    }
+
+    .subContainer {
+        align-items: flex-start;
+        background-color: transparent;
+    }
+
+    .firstSection {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .descriptionSectionDesktop {
+        max-width: 40%;
+    }
+
+    
+    .subSectionDesktop {
+        width: 100%;
+    }
+
+    .imgDesktop {
+        display: flex;
+        position: relative;
+        overflow: hidden;
+        height: 500px;
+        width: 100%;
+        margin: 15px;
+        background-color: transparent;
+    }
+    
+    .secondSection {
+        width: 95%;
+        margin-right: 5%;
+    }
+
+    .sectionDesktop {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .thirdSection {
+        justify-content: flex-end;
+        gap: 60px
+    }
 }

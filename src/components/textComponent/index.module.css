@@ -1,48 +1,66 @@
 .container {
     max-width: 100%;
     margin: 5px;
-  }
+}
+
+.mainText {
+  line-height: 1.2em; 
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--grey)
+}
+
+.mainText:after {
+  content: "";
+  display:inline-block;
+  width:40px;
+  position:relative;
+  z-index:999;
+  box-shadow:
+    40px 0 0 #fff,
+    80px 0 0 #fff,
+    120px 0 0 #fff,
+    160px 0 0 #fff;
+  color: #8e8f8f;
+  font-size: 10px;
+  background: #fff; 
+  margin-left:2px;
+}
+
+.mainText span {
+  color: var(--orange);
+  position: absolute;
+  right: 0;
+  padding: 0 3px;
+  background: #fff;
+  font-weight: 700;
+}
+
+.mainText span:before {
+  content: "..."; 
+  color: var(--grey);
+  margin: 0 5px 0 0;
+  font-weight: 400;
+}
   
-  .mainText {
-    line-height: 1.2em; 
-    overflow: hidden;
-    display: inline-block;
-    position: relative;
+@media (min-width: 1200px) {
+  .container {
     width: 100%;
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--grey)
+    margin: 0;
   }
-  
-  .mainText:after {
-    content: "";
-    display:inline-block;
-    width:40px;
-    position:relative;
-    z-index:999;
-    box-shadow:
-      40px 0 0 #fff,
-      80px 0 0 #fff,
-      120px 0 0 #fff,
-      160px 0 0 #fff;
-    color: #8e8f8f;
-    font-size: 10px;
-    background: #fff; 
-    margin-left:2px;
+
+  .mainText {
+    width: 35vw;
   }
-  
-  .mainText span {
-    color: var(--orange);
-    position: absolute;
-    right: 0;
-    padding: 0 3px;
-    background: #fff;
-    font-weight: 700;
-  }
-  
+
+  .mainText:after,
+  .mainText span,
+  .button,
   .mainText span:before {
-    content: "..."; 
-    color: var(--grey);
-    margin: 0 5px 0 0;
-    font-weight: 400;
+    display: none;
   }
+}

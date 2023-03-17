@@ -50,5 +50,8 @@ export interface CardProps {
 
 export interface TextProps {
     text:      string;
-    maxHeight: number;
+}
+
+export interface NavProps {
+    activeNav: string;
 }
