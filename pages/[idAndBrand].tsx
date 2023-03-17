@@ -17,18 +17,7 @@ export default function ProductDetail() {
 
     useEffect(() => {
         if(!router.isReady) return;
-
-        const getStockAndPricePromise = async (code: string) => {
-            try {
-                const { data } = await axios.get("/api/stock-price/" + code);
-
-                return data?.stockPrice;
-            } catch (error) { 
-                setNotFound(true);
-                console.log(error);
-            }
-        };
-
+        
         const getProductPromise = async () => {
             try {
                 const id = getId();
@@ -39,14 +28,9 @@ export default function ProductDetail() {
 
                 setProduct(thisBrand);
 
-                turnImageToPng(thisBrand.image);
+                setImageToPng(thisBrand.image);
                 
-                const stockPrice = await getStockAndPricePromise(thisBrand.skus[0].code);
-
-                const priceInUsd = priceToUsd(stockPrice.price);
-
-                setStock(stockPrice.stock);
-                setPrice(priceInUsd);
+                updateStockAndPrice(thisBrand.skus[0].code);
             } catch (error) { 
                 setNotFound(true);
                 console.log(error);
@@ -55,6 +39,18 @@ export default function ProductDetail() {
         
         getProductPromise();
     }, [router.isReady]);
+
+    const getStockAndPricePromise = async (code: string) => {
+        try {
+            const { data } = await axios.get("/api/stock-price/" + code);
+
+            return data?.stockPrice;
+        } catch (error) { 
+            setNotFound(true);
+            console.log(error);
+        }
+    };
+
 
     const priceToUsd = (price: number) => {
         const priceString = price.toString();
@@ -80,12 +76,28 @@ export default function ProductDetail() {
         return queries[0];
     };
 
-    const turnImageToPng = (image: string) => {
+    const setImageToPng = (image: string) => {
         const imgArr = image.split(".");
 
         const img = imgArr[0] + ".png";
 
         setImage(img);
+    };
+
+    const updateStockAndPrice = async (code: string) => {
+        try {
+            const { data } = await axios.get("/api/stock-price/" + code);
+
+            const stockAndPrice = data?.stockPrice;
+
+            const priceInUsd = priceToUsd(stockAndPrice.price);
+
+            setStock(stockAndPrice.stock);
+            setPrice(priceInUsd);
+        } catch (error) { 
+            setNotFound(true);
+            console.log(error);
+        }
     };
 
     return (
@@ -134,6 +146,14 @@ export default function ProductDetail() {
                     <div className={styles.secondSection}>
                         <h3>Description</h3>
                         <TextComponent text={product?.information || ""} maxHeight={96} />
+                    </div>
+                    <div className={styles.secondSection}>
+                        <h4>Size</h4>
+                        <div className={styles.sizesContainer}>
+                            {
+                                product && product.skus.map(size => <button onClick={() => updateStockAndPrice(size.code)} key={size.code} className={styles.size}>{size.name}</button>)
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

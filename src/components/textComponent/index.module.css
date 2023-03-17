@@ -11,6 +11,7 @@
     width: 100%;
     font-size: 14px;
     font-weight: 400;
+    color: var(--grey)
   }
   
   .mainText:after {
@@ -41,7 +42,7 @@
   
   .mainText span:before {
     content: "..."; 
-    color: var(--black);
+    color: var(--grey);
     margin: 0 5px 0 0;
     font-weight: 400;
   }
