@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import Link from 'next/link';
 import axios from 'axios';
 import styles from '@/styles/ProductDetail.module.css';
 import { Product } from '@/types';
@@ -30,7 +31,7 @@ export default function ProductDetail() {
                 setProduct(thisBrand);
 
                 setImageToPng(thisBrand.image);
-                
+
                 updateStockAndPrice(thisBrand.skus[0].code);
             } catch (error) { 
                 setNotFound(true);
@@ -40,6 +41,16 @@ export default function ProductDetail() {
         
         getProductPromise();
     }, [router.isReady]);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (activeSize !== "") {
+                updateStockAndPrice(activeSize);
+            }
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [activeSize]);
 
     const priceToUsd = (price: number) => {
         const priceString = price.toString();
@@ -101,7 +112,7 @@ export default function ProductDetail() {
         <>
             <div className={styles.container}>
                 <div className={styles.nav}>
-                    <a href="/">
+                    <Link href={"/"} className={styles.goBack}>
                         <svg
                             fill="#323232"
                             viewBox="0 0 16 16"
@@ -110,7 +121,7 @@ export default function ProductDetail() {
                             >
                             <path fillRule="evenodd" d="M12 8a.5.5 0 01-.5.5H5.707l2.147 2.146a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 11.708.708L5.707 7.5H11.5a.5.5 0 01.5.5z"/>
                         </svg>
-                    </a>
+                    </Link>
                     <h2>Detail</h2>
                     <button>
                         <svg

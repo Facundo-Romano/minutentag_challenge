@@ -14,7 +14,8 @@
     margin: 40px 10% 0 10%;
 }
 
-.nav button {
+.nav button,
+.goBack {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,6 +37,7 @@
     overflow: hidden;
     height: 240px;
     width: 100%;
+    margin: 15px 0;
     background-color: transparent;
 }
 
