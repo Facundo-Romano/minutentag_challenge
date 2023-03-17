@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    height: 70px;
+    padding: 0 10%;
+    background-color: var(--white);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.active {
+   /*  -webkit-filter: drop-shadow(10px 10px 10px 10px rgba(255,159,36, 1)); */
+   filter: drop-shadow(0 0 10px rgba(255,159,36, 1));
+}

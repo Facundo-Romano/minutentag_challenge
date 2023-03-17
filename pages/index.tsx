@@ -5,6 +5,7 @@ import styles from '@/styles/Home.module.css';
 import Nav from '@/src/components/nav';
 import SearchBar from '@/src/components/searchBar';
 import Card from '@/src/components/card';
+import BottomNavBar from '@/src/components/bottomNavBar';
 import { Product } from '@/types';
 
 export default function Home() {
@@ -32,40 +33,43 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.container}>
-        <Nav />
-        <h2 className={styles.h2}>Hi Mr. Michael,</h2>
-        <h1 className={styles.h1}>Welcome Back!</h1>
-        <SearchBar />
-        <div className={styles.subContainer}>
-          <div className={styles.section}>
-            <h3 className={styles.h3}>Drink Category</h3>
-            <p className={styles.seeAll}>See All</p>
+      <>
+        <div className={styles.container}>
+          <Nav />
+          <h2 className={styles.h2}>Hi Mr. Michael,</h2>
+          <h1 className={styles.h1}>Welcome Back!</h1>
+          <SearchBar />
+          <div className={styles.subContainer}>
+            <div className={styles.section}>
+              <h3 className={styles.h3}>Drink Category</h3>
+              <p className={styles.seeAll}>See All</p>
+            </div>
+            <div className={styles.section}>
+              <button className={styles.button}>All</button>
+              <button className={`${styles.button} ${styles.selected}`}>
+                <img className={styles.icon} src="/icons/beer.png" alt="beer icon" />
+                Beer
+              </button>
+              <button className={styles.button}>
+                <img className={styles.icon} src="/icons/wine-glass.png" alt="wine icon" />
+                Wine
+              </button>
+            </div>
           </div>
-          <div className={styles.section}>
-            <button className={styles.button}>All</button>
-            <button className={`${styles.button} ${styles.selected}`}>
-              <img className={styles.icon} src="/icons/beer.png" alt="beer icon" />
-              Beer
-            </button>
-            <button className={styles.button}>
-              <img className={styles.icon} src="/icons/wine-glass.png" alt="wine icon" />
-              Wine
-            </button>
+          <div className={styles.subContainer}>
+            <div className={styles.section}>
+              <h4 className={styles.h3}>Popular</h4>
+              <p className={styles.seeAll}>See All</p>
+            </div>
+            <div className={styles.section}>
+              {
+                products?.map((product, idx) => <Card {...product} idx={idx} key={product.code}/>)
+              }
+            </div>
           </div>
         </div>
-        <div className={styles.subContainer}>
-          <div className={styles.section}>
-            <h4 className={styles.h3}>Popular</h4>
-            <p className={styles.seeAll}>See All</p>
-          </div>
-          <div className={styles.section}>
-            {
-              products?.map((product, idx) => <Card {...product} idx={idx} key={product.code}/>)
-            }
-          </div>
-        </div>
-      </div>
+        <BottomNavBar />
+      </>
     </>
   );
 };
