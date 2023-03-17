@@ -11,12 +11,12 @@ const Card: NextPage<CardProps> = ({ brand, image, price, idx, id }) => {
 
     return (
         <div className={`${styles.container} ${idx%2 === 0 ? styles.even : styles.odd}`}>
-            <Link href={`/${id}-${brand}`} className={styles.brand}>{brand}</Link>
-            <Link href={`/${id}-${brand}`} className={styles.img}>
+            <Link href={`/${id}-${brand.replace(" ", "-")}`} className={styles.brand}>{brand}</Link>
+            <Link href={`/${id}-${brand.replace(" ", "-")}`} className={styles.img}>
                 <Image src={image} fill style={{ objectFit: 'contain' }} alt={`${brand} image`} />
             </Link>
             <div className={styles.bottom}>
-                <Link href={`/${id}-${brand}`} className={styles.price}>{`$${dollars}.${cents}`}</Link>
+                <Link href={`/${id}-${brand.replace(" ", "-")}`} className={styles.price}>{`$${dollars}.${cents}`}</Link>
                 <div className={styles.icon}>
                     <div className={styles.lineVertical} />
                     <div className={styles.lineHorizontal} />
