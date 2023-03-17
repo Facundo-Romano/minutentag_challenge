@@ -1,9 +1,29 @@
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
+import axios from 'axios';
 import styles from '@/styles/Home.module.css';
 import Nav from '@/src/components/nav';
 import SearchBar from '@/src/components/searchBar';
+import Card from '@/src/components/card';
+import { Product } from '@/types';
 
 export default function Home() {
+  const [products, setProducts] = useState<Product[]>();
+
+  useEffect(() => {
+    const productsPromise = async () => {
+      try {
+        const { data } = await axios.get("/api/products");
+
+        setProducts(data?.products);
+      } catch (error) { 
+        console.log(error)
+      }
+    };
+    
+    productsPromise();
+  }, []);
+
   return (
     <>
       <Head>
@@ -17,12 +37,12 @@ export default function Home() {
         <h2 className={styles.h2}>Hi Mr. Michael,</h2>
         <h1 className={styles.h1}>Welcome Back!</h1>
         <SearchBar />
-        <div className={styles.categoriesContainer}>
-          <div className={styles.categoriesSubContainer}>
+        <div className={styles.subContainer}>
+          <div className={styles.section}>
             <h3 className={styles.h3}>Drink Category</h3>
             <p className={styles.seeAll}>See All</p>
           </div>
-          <div className={styles.categoriesSubContainer}>
+          <div className={styles.section}>
             <button className={styles.button}>All</button>
             <button className={`${styles.button} ${styles.selected}`}>
               <img className={styles.icon} src="/icons/beer.png" alt="beer icon" />
@@ -32,6 +52,17 @@ export default function Home() {
               <img className={styles.icon} src="/icons/wine-glass.png" alt="wine icon" />
               Wine
             </button>
+          </div>
+        </div>
+        <div className={styles.subContainer}>
+          <div className={styles.section}>
+            <h4 className={styles.h3}>Popular</h4>
+            <p className={styles.seeAll}>See All</p>
+          </div>
+          <div className={styles.section}>
+            {
+              products?.map((product, idx) => <Card {...product} idx={idx} key={product.code}/>)
+            }
           </div>
         </div>
       </div>

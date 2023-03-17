@@ -19,7 +19,7 @@
 .linesContainer {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     justify-content: center;
     width: 45%;
     gap: 5px;
