@@ -63,7 +63,7 @@ export default function Home() {
             </div>
             <div className={styles.section}>
               {
-                products?.map((product, idx) => <Card {...product} idx={idx} key={product.code}/>)
+                products?.map((product, idx) => <Card {...product} idx={idx} key={product.id}/>)
               }
             </div>
           </div>

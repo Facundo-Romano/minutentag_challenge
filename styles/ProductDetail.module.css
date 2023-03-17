@@ -1,0 +1,87 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 40px 10% 0 10%;
+}
+
+.nav button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 15px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--white);
+}
+
+.nav h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.img {
+    position: relative;
+    overflow: hidden;
+    height: 240px;
+    width: 100%;
+    background-color: transparent;
+}
+
+.subContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--white);
+    border-radius: 30px 30px 0 0;
+    width: calc(100% - 40px);
+    height: calc(100vh - 320px);
+    padding: 0 20px;
+}
+
+.firstSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 45px 0 0 0;
+}
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.brand h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.brand p {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    color: var(--grey)
+}
+
+.price {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--orange);
+    margin: 0;
+}
