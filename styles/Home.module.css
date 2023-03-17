@@ -127,4 +127,8 @@
     .categoriesDesktop {
         justify-content: flex-start;
     }
+
+    .cardSection {
+        justify-content: flex-start;
+    }
 }

@@ -3,7 +3,6 @@ import styles from './index.module.css';
 import { CardProps } from '@/types';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
 
 const Card: NextPage<CardProps> = ({ brand, image, price, idx, id }) => {
     const priceString = price.toString();
