@@ -49,7 +49,7 @@ export default function Home() {
               <h3 className={styles.h3}>Drink Category</h3>
               <p className={styles.seeAll}>See All</p>
             </div>
-            <div className={styles.section}>
+            <div className={`${styles.section} ${styles.categoriesDesktop}`}>
               <button className={styles.button}>All</button>
               <button className={`${styles.button} ${styles.selected}`}>
                 <Image className={styles.icon} width={23} height={23} src="/icons/beer.png" alt="beer icon" />

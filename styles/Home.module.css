@@ -118,4 +118,13 @@
     .welcome {
         width: 240px;
     }
+
+    .subContainer {
+        max-width: 90%;
+        margin: 30px 5%;
+    }
+
+    .categoriesDesktop {
+        justify-content: flex-start;
+    }
 }
