@@ -19,3 +19,11 @@
     padding: 0;
     color: var(--grey);
 }
+
+@media (min-width: 1200px) {
+    .container {
+        margin: 0;
+        margin-left: 5%;
+        max-width: 600px;
+    }
+}

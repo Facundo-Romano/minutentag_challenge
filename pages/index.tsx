@@ -37,9 +37,13 @@ export default function Home() {
       <>
         <div className={styles.container}>
           <Nav />
-          <h2 className={styles.h2}>Hi Mr. Michael,</h2>
-          <h1 className={styles.h1}>Welcome Back!</h1>
-          <SearchBar />
+          <div className={styles.subContainerDesktop}>
+            <div className={styles.welcome}>
+              <h2 className={styles.h2}>Hi Mr. Michael,</h2>
+              <h1 className={styles.h1}>Welcome Back!</h1>
+            </div>
+            <SearchBar />
+          </div>
           <div className={styles.subContainer}>
             <div className={styles.section}>
               <h3 className={styles.h3}>Drink Category</h3>
