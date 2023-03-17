@@ -1,11 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { Response, Product, Prices } from '@/types';
+import { ResponseProducts, Product, Prices } from '@/types';
 import brands from '@/src/database/products.js';
 import pricesWithoutInterface from '@/src/database/stock-price.js';
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Response>
+  res: NextApiResponse<ResponseProducts>
 ) {
   if (req.method === "GET") {
 
@@ -14,13 +14,13 @@ export default function handler(
     const prices: Prices = pricesWithoutInterface;
 
     brands.forEach(brand => {
-      brand.skus.forEach(product => {
-        products.push({
-          ...brand,
-          ...product,
-          ...prices[product.code]
-        })
-      });
+      const code = brand.skus[0].code;
+      const price = prices[code].price;
+      
+      products.push({
+        ...brand,
+        price
+      })
     });
 
     res.status(200).json({ products });
