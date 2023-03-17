@@ -1,9 +1,9 @@
 import { NextPage } from 'next';
 import styles from './index.module.css';
-import { Product } from '@/types';
+import { CardProps } from '@/types';
 import Image from 'next/image';
 
-const Card: NextPage<Product> = ({ brand, image, price, code, name, idx }) => {
+const Card: NextPage<CardProps> = ({ brand, image, price, idx }) => {
     const priceString = price.toString();
     const cents = priceString.slice(priceString.length-2);
     const dollars = priceString.slice(0, priceString.length-2);
@@ -14,7 +14,7 @@ const Card: NextPage<Product> = ({ brand, image, price, code, name, idx }) => {
         <div className={`${styles.container} ${idx%2 === 0 ? styles.even : styles.odd}`}>
             <p className={styles.brand}>{brand}</p>
             <div className={styles.img}>
-                <Image src={image} fill style={{ objectFit: 'contain' }} alt={`${name} image`} />
+                <Image src={image} fill style={{ objectFit: 'contain' }} alt={`${brand} image`} />
             </div>
             <div className={styles.bottom}>
                 <p>{`$${dollars}.${cents}`}</p>
