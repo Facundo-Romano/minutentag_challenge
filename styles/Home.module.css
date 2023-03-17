@@ -75,8 +75,14 @@
 
 .cardSection {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        margin: 0;
+    }
 }

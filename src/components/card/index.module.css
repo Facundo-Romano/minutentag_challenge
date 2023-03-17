@@ -1,9 +1,10 @@
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     width: 46%;
+    min-width: 140px;
     margin: 5px 2%;
     background-color: var(--white);
     overflow: hidden;
